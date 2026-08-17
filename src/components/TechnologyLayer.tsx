@@ -1,37 +1,24 @@
-import {
-  BrainCircuit,
-  ChevronDown,
-  ChevronRight,
-  Database,
-  FileOutput,
-  ListChecks,
-  Server,
-} from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { Container, PixelMosaic, Reveal, SectionHeading } from "./ui";
 
 const LAYERS = [
   {
-    icon: Server,
     title: "Sources",
     items: ["ERPs & ledgers", "Banks & payment files", "Payroll, SaaS & files"],
   },
   {
-    icon: Database,
     title: "Data layer",
     items: ["Standardized models", "Quality & validation rules", "Secure cloud storage"],
   },
   {
-    icon: BrainCircuit,
     title: "Rules & AI",
     items: ["Matching & posting rules", "ML where it earns its place", "Human-in-the-loop"],
   },
   {
-    icon: ListChecks,
     title: "Workflow & controls",
     items: ["Approvals & validations", "Exception queues", "Logs & audit trail"],
   },
   {
-    icon: FileOutput,
     title: "Outputs",
     items: ["Reports & filings", "ERP postings", "Dashboards & alerts"],
   },
@@ -56,12 +43,12 @@ export default function TechnologyLayer() {
     <section id="technology" className="relative scroll-mt-24 overflow-hidden bg-navy-950">
       <PixelMosaic
         dark
-        className="absolute -left-6 top-10 opacity-30"
-        rows={9}
-        cols={10}
+        className="absolute -right-4 top-12 opacity-25"
+        rows={8}
+        cols={12}
         seed={47}
       />
-      <Container className="relative py-20 lg:py-24">
+      <Container className="relative py-24 lg:py-28">
         <Reveal>
           <SectionHeading
             dark
@@ -71,26 +58,23 @@ export default function TechnologyLayer() {
           />
         </Reveal>
 
-        <div className="mt-14 flex flex-col gap-3 lg:flex-row lg:items-stretch lg:gap-0">
+        <div className="mt-16 flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-0">
           {LAYERS.map((layer, i) => (
             <Reveal
               key={layer.title}
               delay={i * 90}
-              className="flex flex-col gap-3 lg:flex-1 lg:flex-row lg:items-center lg:gap-0"
+              className="flex flex-col gap-4 lg:flex-1 lg:flex-row lg:items-center lg:gap-0"
             >
-              <div className="h-full flex-1 rounded-xl border border-navy-700 bg-navy-800/70 p-5 transition-colors hover:border-blue-500/60">
-                <div className="flex items-center justify-between">
-                  <layer.icon aria-hidden className="h-5 w-5 text-green-400" />
-                  <span className="text-[11px] font-bold text-navy-400">
-                    0{i + 1}
-                  </span>
-                </div>
-                <h3 className="mt-3.5 text-[15px] font-bold text-white">
+              <div className="h-full flex-1 border border-white/20 p-6 transition-colors hover:border-green-400/70">
+                <p className="font-display text-[1.6rem] font-semibold leading-none text-white/25">
+                  0{i + 1}
+                </p>
+                <h3 className="mt-4 text-[15px] font-bold text-white">
                   {layer.title}
                 </h3>
-                <ul className="mt-2.5 space-y-1.5">
+                <ul className="mt-3 space-y-1.5 border-t border-white/15 pt-3">
                   {layer.items.map((item) => (
-                    <li key={item} className="text-xs leading-snug text-navy-100/70">
+                    <li key={item} className="text-xs font-light leading-snug text-white/65">
                       {item}
                     </li>
                   ))}
@@ -100,11 +84,11 @@ export default function TechnologyLayer() {
                 <>
                   <ChevronRight
                     aria-hidden
-                    className="mx-1 hidden h-5 w-5 shrink-0 text-blue-400 lg:block"
+                    className="mx-1.5 hidden h-5 w-5 shrink-0 text-green-400 lg:block"
                   />
                   <ChevronDown
                     aria-hidden
-                    className="mx-auto h-5 w-5 shrink-0 text-blue-400 lg:hidden"
+                    className="mx-auto h-5 w-5 shrink-0 text-green-400 lg:hidden"
                   />
                 </>
               )}
@@ -113,21 +97,23 @@ export default function TechnologyLayer() {
         </div>
 
         <Reveal delay={200}>
-          <div className="mt-14 border-t border-navy-800 pt-9">
-            <p className="text-xs font-semibold uppercase tracking-eyebrow text-navy-300">
+          <div className="mt-16 border-t border-white/20 pt-8">
+            <p className="text-[11.5px] font-semibold uppercase tracking-eyebrow text-white/50">
               ERP-agnostic by design — we plug into your landscape, not the
               other way around
             </p>
-            <ul className="mt-5 flex flex-wrap gap-2.5">
-              {SYSTEMS.map((system) => (
-                <li
-                  key={system}
-                  className="rounded-full border border-navy-700 px-3.5 py-1.5 text-xs font-medium text-navy-100/85"
-                >
-                  {system}
-                </li>
+            <p className="mt-5 max-w-4xl text-[15px] font-light leading-loose text-white/80">
+              {SYSTEMS.map((system, i) => (
+                <span key={system}>
+                  <span className="whitespace-nowrap font-medium">{system}</span>
+                  {i < SYSTEMS.length - 1 && (
+                    <span aria-hidden className="mx-3 text-green-400">
+                      ·
+                    </span>
+                  )}
+                </span>
               ))}
-            </ul>
+            </p>
           </div>
         </Reveal>
       </Container>

@@ -1,11 +1,12 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Calan design language, lifted from the current calan.com identity:
- * — deep corporate navy for ink, buttons and dark bands,
- * — the Calan brand blue for links, highlights and headings,
- * — the signature green square as the accent (eyebrows, markers, hovers),
- * — cold light-blue tints for section backgrounds.
+ * Calan design language — "leading firm" register.
+ * Colors are lifted from the current calan.com identity: corporate navy ink,
+ * the Calan brand blue, the signature green square as a sharp accent, and
+ * cold light-blue tints. The premium register comes from typography
+ * (editorial serif display), hairline rules, squared corners and photography
+ * — not from gradients or rounded cards.
  */
 const config: Config = {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
@@ -48,6 +49,7 @@ const config: Config = {
           700: "#3F7E23",
           800: "#33651E",
         },
+        paper: "#F7F9FB",
         mist: "#F4F8FB",
         cloud: "#E4EEF7",
         ink: {
@@ -56,21 +58,28 @@ const config: Config = {
           faint: "#5E7490",
         },
       },
+      borderColor: {
+        rule: "rgba(16, 44, 75, 0.15)",
+        "rule-dark": "rgba(255, 255, 255, 0.16)",
+      },
       fontFamily: {
         sans: ["'Inter Variable'", "Inter", "system-ui", "sans-serif"],
+        display: [
+          "'Source Serif 4 Variable'",
+          "'Source Serif 4'",
+          "Georgia",
+          "serif",
+        ],
       },
       boxShadow: {
-        card: "0 1px 2px rgba(16, 44, 75, 0.06), 0 1px 3px rgba(16, 44, 75, 0.08)",
-        "card-hover":
-          "0 12px 32px -12px rgba(16, 44, 75, 0.22), 0 2px 6px rgba(16, 44, 75, 0.08)",
-        panel: "0 32px 80px -32px rgba(10, 31, 56, 0.45)",
-        header: "0 6px 24px -12px rgba(16, 44, 75, 0.18)",
+        card: "0 1px 2px rgba(16, 44, 75, 0.05)",
+        panel: "0 24px 64px -32px rgba(10, 31, 56, 0.4)",
       },
       maxWidth: {
-        content: "76rem",
+        content: "80rem",
       },
       letterSpacing: {
-        eyebrow: "0.16em",
+        eyebrow: "0.18em",
       },
     },
   },

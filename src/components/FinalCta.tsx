@@ -6,7 +6,8 @@ import {
   Download,
   PlayCircle,
 } from "lucide-react";
-import { Container, Eyebrow, PixelMosaic, Reveal } from "./ui";
+import { IMAGES } from "../lib/images";
+import { Container, Eyebrow, Photo, Reveal } from "./ui";
 
 const MICRO_CONVERSIONS = [
   { icon: Download, label: "Download the process automation checklist" },
@@ -26,7 +27,7 @@ const PROCESSES = [
 ];
 
 const inputClass =
-  "w-full rounded-md border border-navy-200 bg-white px-3.5 py-2.5 text-sm text-navy-900 placeholder:text-ink-faint/70 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200";
+  "w-full border border-navy-200 bg-white px-3.5 py-3 text-sm text-navy-900 placeholder:text-ink-faint/60 focus:border-blue-600 focus:outline-none";
 
 function DiagnosticForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -41,10 +42,10 @@ function DiagnosticForm() {
 
   if (submitted) {
     return (
-      <div className="flex h-full flex-col items-center justify-center rounded-2xl bg-white p-10 text-center shadow-panel">
-        <CheckCircle2 aria-hidden className="h-12 w-12 text-green-600" />
-        <h3 className="mt-5 text-xl font-bold tracking-tight text-navy-900">
-          Thank you — your request is on its way to the right specialist.
+      <div className="flex h-full flex-col items-center justify-center bg-white p-10 text-center shadow-panel">
+        <CheckCircle2 aria-hidden className="h-12 w-12 text-green-600" strokeWidth={1.5} />
+        <h3 className="mt-6 font-display text-2xl font-semibold text-navy-900">
+          Thank you — your request is with the right specialist.
         </h3>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-soft">
           We usually come back within one business day with a first read of
@@ -57,7 +58,7 @@ function DiagnosticForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl bg-white p-7 shadow-panel sm:p-8"
+      className="bg-white p-7 shadow-panel sm:p-9"
       aria-label="Talk to a finance automation expert"
     >
       <div className="grid gap-4 sm:grid-cols-2">
@@ -137,11 +138,11 @@ function DiagnosticForm() {
         />
       </div>
 
-      <label className="mt-4 flex items-start gap-2.5 text-xs leading-relaxed text-ink-soft">
+      <label className="mt-5 flex items-start gap-2.5 text-xs leading-relaxed text-ink-soft">
         <input
           type="checkbox"
           required
-          className="mt-0.5 h-4 w-4 shrink-0 rounded border-navy-300 accent-blue-600"
+          className="mt-0.5 h-4 w-4 shrink-0 border-navy-300 accent-blue-700"
         />
         I agree to be contacted about my request and accept the privacy
         policy.
@@ -149,7 +150,7 @@ function DiagnosticForm() {
 
       <button
         type="submit"
-        className="mt-6 w-full rounded-md bg-navy-800 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-navy-900 hover:shadow-md"
+        className="mt-6 w-full bg-navy-900 px-5 py-4 text-[13px] font-semibold tracking-wide text-white transition-colors hover:bg-blue-700"
       >
         Talk to a finance automation expert
       </button>
@@ -163,39 +164,46 @@ function DiagnosticForm() {
 
 export default function FinalCta() {
   return (
-    <section id="contact" className="relative scroll-mt-24 overflow-hidden bg-navy-900">
-      <PixelMosaic
-        dark
-        className="absolute -right-8 bottom-0 opacity-35"
-        rows={10}
-        cols={14}
-        seed={59}
+    <section id="contact" className="relative scroll-mt-24 overflow-hidden bg-navy-950">
+      <Photo
+        src={IMAGES.cta}
+        alt="Calan office space"
+        label="Office"
+        showLabel={false}
+        className="absolute inset-0"
+        imgClassName="opacity-25"
       />
-      <Container className="relative grid items-center gap-14 py-20 lg:grid-cols-[1fr_0.95fr] lg:py-24">
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/40"
+      />
+      <Container className="relative grid items-center gap-14 py-24 lg:grid-cols-[1fr_0.95fr] lg:py-28">
         <Reveal>
           <Eyebrow dark>Talk to an expert</Eyebrow>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.12] text-white sm:text-[2.9rem]">
             Which finance process should run better?
           </h2>
-          <p className="mt-4 max-w-lg text-lg leading-relaxed text-navy-100/80">
+          <p className="mt-5 max-w-lg text-lg font-light leading-relaxed text-white/80">
             Tell us which process, how many entities and which systems are
             involved. We will come back with the right specialist — not a
             generic sales call.
           </p>
-          <ul className="mt-9 space-y-3.5">
+          <ul className="mt-10 max-w-md divide-y divide-white/15 border-y border-white/15">
             {MICRO_CONVERSIONS.map((item) => (
               <li key={item.label}>
                 <a
                   href="#contact"
-                  className="group flex items-center gap-3 text-sm font-medium text-navy-100/85 transition-colors hover:text-white"
+                  className="group flex items-center gap-4 py-4 text-sm font-medium text-white/85 transition-colors hover:text-white"
                 >
-                  <span className="rounded-md bg-navy-800 p-2 text-green-400 transition-colors group-hover:bg-navy-700">
-                    <item.icon aria-hidden className="h-4 w-4" />
-                  </span>
+                  <item.icon
+                    aria-hidden
+                    className="h-[18px] w-[18px] text-green-400"
+                    strokeWidth={1.6}
+                  />
                   {item.label}
                   <span
                     aria-hidden
-                    className="text-green-400 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
+                    className="ml-auto text-green-400 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100"
                   >
                     →
                   </span>

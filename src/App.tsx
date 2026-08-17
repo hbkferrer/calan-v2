@@ -7,7 +7,9 @@ import Solutions from "./components/Solutions";
 import Method from "./components/Method";
 import TechnologyLayer from "./components/TechnologyLayer";
 import ClientResult from "./components/ClientResult";
+import MediaSection from "./components/MediaSection";
 import Trust from "./components/Trust";
+import Experts from "./components/Experts";
 import Insights from "./components/Insights";
 import FinalCta from "./components/FinalCta";
 import Footer from "./components/Footer";
@@ -17,7 +19,7 @@ export default function App() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-navy-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-navy-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
       >
         Skip to content
       </a>
@@ -31,7 +33,9 @@ export default function App() {
         <Method />
         <TechnologyLayer />
         <ClientResult />
+        <MediaSection />
         <Trust />
+        <Experts />
         <Insights />
         <FinalCta />
       </main>
