@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-white font-sans text-ink;
+  }
+
+  ::selection {
+    @apply bg-blue-200 text-navy-900;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2b87ce;
+    outline-offset: 2px;
+  }
+}
